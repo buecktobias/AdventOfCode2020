@@ -1,4 +1,9 @@
+import java.util.LinkedList;
 import java.util.List;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -50,6 +55,23 @@ public class Aufgabe1 {
             }
         }
         return -1;
+    }
+    public static List<Integer> getInput(){
+        Path fileName = Path.of("input1.txt");
+        String actual = null;
+        try {
+            actual = Files.readString(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String[] arrOfStr = actual.split("\n");
+        List<Integer> listInteger = new LinkedList<>();
+
+        for(int i = 0; i < arrOfStr.length; i++){
+            String mStr = arrOfStr[i];
+            listInteger.add(Integer.valueOf(mStr));
+        }
+        return listInteger;
     }
 /*
  */

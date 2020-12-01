@@ -58,5 +58,12 @@ class Aufgabe1Test {
         assertTrue(Aufgabe1.multiplyElements(exampleList2) == -1);
     }
 
+    @org.junit.jupiter.api.Test
+    void getInput() {
+        assertTrue(Aufgabe1.getInput().contains(1977));
+        assertTrue(Aufgabe1.getInput().contains(910));
+        assertTrue(Aufgabe1.getInput().contains(1868));
+    }
+
 
 }
