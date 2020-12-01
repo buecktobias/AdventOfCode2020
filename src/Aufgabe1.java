@@ -35,20 +35,22 @@ public class Aufgabe1 {
         }
         return false;
     }
+
+    public static int multiplyElements(List<Integer> list){
+        int element1;
+        int element2;
+
+        for(int i = 0; i < list.size()-1; i++) {
+            for(int k = i+1; k < list.size(); k++){
+                element1 = list.get(i);
+                element2 = list.get(k);
+                if(isSum2020(element1, element2)){
+                    return multiply(element1, element2);
+                }
+            }
+        }
+        return -1;
+    }
 /*
-[20,40,6]: length = 3
-i = 0
-k = 1
-20+40 - false
-k = 2
-20+6 -> false
-i = 1
-k = 2
-40+6 -> false
-false
  */
-
-
-
-
 }
