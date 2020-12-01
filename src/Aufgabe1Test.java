@@ -60,10 +60,15 @@ class Aufgabe1Test {
 
     @org.junit.jupiter.api.Test
     void getInput() {
-        assertTrue(Aufgabe1.getInput().contains(1977));
-        assertTrue(Aufgabe1.getInput().contains(910));
-        assertTrue(Aufgabe1.getInput().contains(1868));
+        String file = "input1.txt";
+        assertTrue(Aufgabe1.getInput(file).contains(1977));
+        assertTrue(Aufgabe1.getInput(file).contains(910));
+        assertTrue(Aufgabe1.getInput(file).contains(1868));
     }
 
+    @org.junit.jupiter.api.Test
+    void solve() {
+        assertTrue(Aufgabe1.solve("test_input") == 514579);
+    }
 
 }

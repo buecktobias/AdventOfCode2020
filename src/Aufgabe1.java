@@ -56,8 +56,8 @@ public class Aufgabe1 {
         }
         return -1;
     }
-    public static List<Integer> getInput(){
-        Path fileName = Path.of("input1.txt");
+    public static List<Integer> getInput(String nameOfFile){
+        Path fileName = Path.of(nameOfFile);
         String actual = null;
         try {
             actual = Files.readString(fileName);
@@ -72,6 +72,10 @@ public class Aufgabe1 {
             listInteger.add(Integer.valueOf(mStr));
         }
         return listInteger;
+    }
+
+    public static int solve(String filename){
+        return multiplyElements(getInput(filename));
     }
 /*
  */
