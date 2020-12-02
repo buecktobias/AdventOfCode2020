@@ -15,11 +15,21 @@ public class Aufgabe2 {
             }
             return counter;
         }
+
         public static boolean isPasswordCorrect(Password pwd){
-            char letter = pwd.getPolicyLetter();
+             char letter = pwd.getPolicyLetter();
              int amountLetter = PasswordChecker.countAmount(letter, pwd.getPassword());
              return pwd.getLowerBound() <= amountLetter && amountLetter <= pwd.getUpperBound();
         }
+
+        public static boolean isPasswordCorrect2(Password pwd){
+            char letter = pwd.getPolicyLetter();
+            char[] password = pwd.getPassword().toCharArray();
+            boolean lowerBoundEqualToLetter = password[pwd.getLowerBound() - 1] == letter;
+            boolean upperBoundEqualToLetter = password[pwd.getUpperBound() - 1] == letter;
+            return (lowerBoundEqualToLetter && ! upperBoundEqualToLetter) || (!lowerBoundEqualToLetter && upperBoundEqualToLetter);
+        }
+
     }
 
     public static class Password{
@@ -97,6 +107,18 @@ public class Aufgabe2 {
 
         for(Password pwd: passwordList){
             if(PasswordChecker.isPasswordCorrect(pwd)){
+                rightPasswords++;
+            }
+        }
+        return rightPasswords;
+    }
+
+    public static int solvePart2(String filename){
+        List<Password> passwordList = getInput(filename);
+        int rightPasswords = 0;
+
+        for(Password pwd: passwordList){
+            if(PasswordChecker.isPasswordCorrect2(pwd)){
                 rightPasswords++;
             }
         }
