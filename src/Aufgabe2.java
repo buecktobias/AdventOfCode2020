@@ -4,25 +4,26 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Aufgabe2 {
-    public static class PasswordChecker{
-        public static int countAmount(char letter, String password){
+public class Aufgabe2 implements Aufgabe {
+    private static class PasswordChecker {
+        public static int countAmount(char letter, String password) {
             int counter = 0;
-            for(char c: password.toCharArray()){
-                if (c == letter){
+            for (char c : password.toCharArray()) {
+                if (c == letter) {
                     counter++;
                 }
             }
             return counter;
         }
-        public static boolean isPasswordCorrect(Password pwd){
+
+        public static boolean isPasswordCorrect(Password pwd) {
             char letter = pwd.getPolicyLetter();
-             int amountLetter = PasswordChecker.countAmount(letter, pwd.getPassword());
-             return pwd.getLowerBound() <= amountLetter && amountLetter <= pwd.getUpperBound();
+            int amountLetter = PasswordChecker.countAmount(letter, pwd.getPassword());
+            return pwd.getLowerBound() <= amountLetter && amountLetter <= pwd.getUpperBound();
         }
     }
 
-    public static class Password{
+    private static class Password {
         private final char policyLetter;
         private final int lowerBound;
         private final int upperBound;
@@ -53,15 +54,12 @@ public class Aufgabe2 {
 
         @Override
         public String toString() {
-            return "Password{" +
-                    "policyLetter=" + policyLetter +
-                    ", lowerBound=" + lowerBound +
-                    ", upperBound=" + upperBound +
-                    ", password='" + password + '\'' +
-                    '}';
+            return "Password{" + "policyLetter=" + policyLetter + ", lowerBound=" + lowerBound + ", upperBound="
+                    + upperBound + ", password='" + password + '\'' + '}';
         }
     }
-    public static String[] getInputAsStringArray(String fileName){
+
+    private static String[] getInputAsStringArray(String fileName) {
         Path filePath = Path.of(fileName);
         String actual = null;
         try {
@@ -73,10 +71,10 @@ public class Aufgabe2 {
         return arrOfStr;
     }
 
-    public static List<Password> getInput(String filename){
+    private static List<Password> getInput(String filename) {
         String[] inputStringArray = getInputAsStringArray(filename);
         List<Password> passwords = new LinkedList<>();
-        for (String line : inputStringArray){
+        for (String line : inputStringArray) {
             String[] parts = line.split(" ");
             String bounds = parts[0];
             String letterPart = parts[1];
@@ -91,15 +89,22 @@ public class Aufgabe2 {
         return passwords;
     }
 
-    public static int solvePart1(String filename){
+    @Override
+    public String solvePart1(String filename) {
         List<Password> passwordList = getInput(filename);
         int rightPasswords = 0;
 
-        for(Password pwd: passwordList){
-            if(PasswordChecker.isPasswordCorrect(pwd)){
+        for (Password pwd : passwordList) {
+            if (PasswordChecker.isPasswordCorrect(pwd)) {
                 rightPasswords++;
             }
         }
-        return rightPasswords;
+        return String.valueOf(rightPasswords);
+    }
+
+    @Override
+    public String solvePart2(String filename) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
