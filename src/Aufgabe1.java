@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class Aufgabe1 {
     public static int add(int a, int b) {
         return a + b;
@@ -17,12 +14,20 @@ public class Aufgabe1 {
         return add(a,b) == sum;
     }
 
+    public static boolean sumIs(int a, int b, int c, int sum){
+        return a + b + c == sum;
+    }
+
     public static int multiply(int a, int b){
         return a * b;
     }
 
     public static boolean isSum2020(int a, int b){
         return sumIs(a,b,2020);
+    }
+
+    public static boolean isSum2020(int a, int b, int c){
+        return sumIs(a,b,c,2020);
     }
 
     public static boolean hasSum (List<Integer> list){
@@ -56,6 +61,32 @@ public class Aufgabe1 {
         }
         return -1;
     }
+
+    public static int multiplyThreeElements(List<Integer> list){
+        int element1;
+        int element2;
+        int element3;
+
+        for(int i = 0; i < list.size(); i++) {
+            for(int k = 0; k < list.size(); k++){
+                for(int l = 0; l < list.size(); l++){
+                    if(i == k || k == l || i == l){
+                        continue;
+                    }
+                    element1 = list.get(i);
+                    element2 = list.get(k);
+                    element3 = list.get(l);
+                    if(isSum2020(element1, element2, element3)){
+                        return element1 * element2 * element3;
+                    }
+                }
+
+            }
+        }
+        return -1;
+    }
+
+
     public static List<Integer> getInput(String nameOfFile){
         Path fileName = Path.of(nameOfFile);
         String actual = null;
@@ -77,6 +108,11 @@ public class Aufgabe1 {
     public static int solve(String filename){
         return multiplyElements(getInput(filename));
     }
+
+    public static int solvePart2(String filename){
+        return multiplyThreeElements(getInput(filename));
+    }
+
 /*
  */
 }
