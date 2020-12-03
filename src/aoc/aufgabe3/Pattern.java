@@ -1,4 +1,4 @@
-package aufgabe3;
+package aoc.aufgabe3;
 
 import java.util.Arrays;
 
