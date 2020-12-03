@@ -9,7 +9,7 @@ public class Main {
         aoc.aufgabe3.Tree tree = new aoc.aufgabe3.Tree();
         System.out.println(tree.isTree());
         try {
-            System.out.println(Arrays.toString(Aufgabe3Solver.readFieldObjectsFromFile("test_input3")));
+            System.out.println(Aufgabe3Solver.solvePart1("input3.txt"));
         } catch (Exception e) {
             e.printStackTrace();
         }

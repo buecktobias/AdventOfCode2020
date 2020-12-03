@@ -13,6 +13,17 @@ public class Pattern {
         return fieldObjects;
     }
 
+    public int getWidth(){
+        return this.fieldObjects[0].length;
+    }
+    public int getheight(){
+        return this.fieldObjects.length;
+    }
+
+    public FieldObject getObjectAt(int x, int y){
+        return this.fieldObjects[y][x];
+    }
+
     @Override
     public String toString() {
         return "Pattern{" +

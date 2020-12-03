@@ -34,7 +34,25 @@ public class Aufgabe3Solver {
         return stringsToFieldObjects(lines);
     }
 
-    public static int solvePart1(){
-        return 0;
+    public static int solvePart1(String filename){
+        FieldObject[][] fieldObjects;
+        try {
+            fieldObjects = readFieldObjectsFromFile(filename);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+        Pattern pattern = new Pattern(fieldObjects);
+        Field field = new Field(pattern);
+        Player player = new Player(0,0, 3, 1);
+        int treeCounter = 0;
+        while(field.isIn(player)){
+            if(field.getObjectAt(player.getX(), player.getY()).isTree()){
+                treeCounter++;
+            }
+            player.move();
+        }
+
+        return treeCounter;
     }
 }
