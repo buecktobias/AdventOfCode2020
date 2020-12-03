@@ -10,7 +10,7 @@ public class Aufgabe3Solver {
             throw new Exception("Wrong char!");
         }
     }
-    public static FieldObject[] StringToFieldObjects(String s) throws Exception{
+    public static FieldObject[] stringToFieldObjects(String s) throws Exception{
         FieldObject[] fieldObjects = new FieldObject[s.length()];
         char[] charArray = s.toCharArray();
         for(int i =0; i < fieldObjects.length; i++){
