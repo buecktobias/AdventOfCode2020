@@ -1,4 +1,8 @@
 package aufgabe3;
 
-public class EmptySpace {
+public class EmptySpace extends FieldObject {
+    @Override
+    public boolean isTree() {
+        return false;
+    }
 }
