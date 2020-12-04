@@ -1,27 +1,31 @@
-package aoc;
+package aoc.aufgabe4;
+
+import aoc.Input;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 public class Aufgabe4Solver {
 
     public static Passport createPassport(String passport){
-        String REGEX = "([\\w]{3}):";
+        String REGEX = "([\\w]{3}):([\\w#]*)";
         String INPUT = passport;
         Pattern pattern = Pattern.compile(REGEX);
 
         // get a matcher object
         Matcher matcher = pattern.matcher(INPUT);
 
-        List<String> keys = new LinkedList<>();
+        HashMap<String, String> hashMap = new HashMap<>();
         while(matcher.find()) {
-            keys.add(matcher.group(1));
+            String key = matcher.group(1);
+            String value = matcher.group(2);
+            hashMap.put(key, value);
+
         }
-        Passport passport1 = new Passport(keys);
+        Passport passport1 = new Passport(hashMap);
         return passport1;
     }
     public static List<Passport> getInput(String filename){
@@ -31,7 +35,7 @@ public class Aufgabe4Solver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[] passports=input.split("\n\n");
+        String[] passports= input.split("\n\n");
         List<Passport> passports1 = new LinkedList<>();
         for(String s: passports){
             passports1.add(createPassport(s));
@@ -46,6 +50,16 @@ public class Aufgabe4Solver {
             if(PassportChecker.isValid(passport)){
                 counter++;
                 System.out.println(passport);
+            }
+        }
+        return counter;
+    }
+    public static int solvePart2(String filename){
+        List<Passport> passports = getInput(filename);
+        int counter = 0;
+        for(Passport passport: passports){
+            if(PassportChecker.isValidPart2(passport)){
+                counter++;
             }
         }
         return counter;
