@@ -5,11 +5,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Input {
+    public static String readFile(String filename) throws IOException{
+        Path filePath = Path.of(filename);
+        String actual = null;
+        actual = Files.readString(filePath);
+        return actual;
+    }
+
     public static String[] getInputAsStringArray(String fileName){
-        Path filePath = Path.of(fileName);
         String actual = null;
         try {
-            actual = Files.readString(filePath);
+            actual = readFile(fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

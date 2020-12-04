@@ -18,6 +18,17 @@ public class Player {
         this.y += this.ySpeed;
     }
 
+    public int moveThroughField(Field field){
+        int treeCounter = 0;
+        while(field.isIn(this)){
+            if(field.getObjectAt(this.getX(), this.getY()).isTree()){
+                treeCounter++;
+            }
+            this.move();
+        }
+        return treeCounter;
+    }
+
     public int getX() {
         return x;
     }
