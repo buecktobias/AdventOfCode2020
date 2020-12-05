@@ -2,10 +2,12 @@ package aoc.aufgabe5;
 
 import aoc.Input;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Aufgabe5Solver {
     public static class BoardingPass{
@@ -79,9 +81,21 @@ public class Aufgabe5Solver {
         return getBoardingPassHighestId(boardingPasses);
     }
 
+    public static int getEmptySeat(List<Integer> seats){
+        for(int i = 1; i < seats.size(); i++){
+            Integer numberBefore = seats.get(i - 1);
+            Integer currentNumber = seats.get(i);
+            if (numberBefore + 2 == currentNumber){
+                return numberBefore + 1;
+            }
+        }
+        return 0;
+    }
+
     public static int solvePart2(String filename){
         List<BoardingPass> boardingPasses = getBoardingPasses(filename);
-        List<Integer> ids = (List<Integer>) boardingPasses.stream().map(boardingPass -> boardingPass.getId());
-        System.out.println(ids);
+        List<Integer> ids = (List<Integer>) boardingPasses.stream().map(BoardingPass::getId).collect(Collectors.toList());
+        Collections.sort(ids);
+        return getEmptySeat(ids);
     }
 }
