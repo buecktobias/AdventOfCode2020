@@ -27,10 +27,14 @@ public class Aufgabe6Solver {
         return sum;
     }
 
-    public static int getAmountUniques(String string){
+    public static HashSet<Character> getHashSet(String string){
         List<Character> characterList = stringToCharacterList(string);
         HashSet<Character> hashSet= new HashSet<Character>(characterList);
-        return hashSet.size();
+        return hashSet;
+    }
+
+    public static int getAmountUniques(String string){
+        return getHashSet(string).size();
     }
 
 
@@ -48,6 +52,33 @@ public class Aufgabe6Solver {
         return formatted;
     }
 
+    public static String[][] getGroupsAs2D(String filename){
+        String[] groups = getGroups(filename);
+        String[][] groups2d = new String[groups.length][];
+        for (int i = 0; i < groups.length; i++) {
+            groups2d[i] = groups[i].split("\n");
+        }
+        return groups2d;
+    }
+
+    public static int countGroupPart2(String[] group){
+        HashSet<Character> all = getHashSet(group[0]);
+        for (String s : group) {
+            all.retainAll(getHashSet(s));
+        }
+        return all.size();
+    }
+
+    public static int summedCountGroupPart2(String[][] groups){
+        int sum = 0;
+        for (String[] group : groups) {
+            sum += countGroupPart2(group);
+        }
+        return sum;
+    }
+
+
+
     public static String[] getGroups(String filename){
         String text = null;
         try {
@@ -63,5 +94,10 @@ public class Aufgabe6Solver {
     public static int solvePart1(String filename){
         String[] formattedGroups =  getFormattedGroup(filename);
         return summedUniques(formattedGroups);
+    }
+
+    public static int solvePart2(String filename){
+        String[][] groups = getGroupsAs2D(filename);
+        return summedCountGroupPart2(groups);
     }
 }
