@@ -1,6 +1,6 @@
 package aoc.aufgabe5;
 
-import aoc.Input;
+import aoc.helper.Input;
 
 import java.util.Collections;
 import java.util.LinkedList;

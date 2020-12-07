@@ -1,5 +1,5 @@
 package aoc.aufgabe3;
-import aoc.Input;
+import aoc.helper.Input;
 
 public class Aufgabe3Solver {
     public static FieldObject charToFieldObject(char c) throws Exception {

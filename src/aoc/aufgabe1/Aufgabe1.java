@@ -1,4 +1,4 @@
-package aoc;
+package aoc.aufgabe1;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package aoc.aufgabe4;
 
-import aoc.Input;
+import aoc.helper.Input;
 
 import java.io.IOException;
 import java.util.HashMap;

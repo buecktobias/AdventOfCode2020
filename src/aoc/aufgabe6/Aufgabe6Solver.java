@@ -1,10 +1,9 @@
 package aoc.aufgabe6;
 
-import aoc.Input;
+import aoc.helper.Input;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
