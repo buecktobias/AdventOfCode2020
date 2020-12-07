@@ -1,7 +1,10 @@
 package aoc.helper.graph;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SimpleNode<T> extends AbstractNode<T>{
     private T value;
@@ -16,9 +19,23 @@ public class SimpleNode<T> extends AbstractNode<T>{
         this.edges.add(newEdge);
     }
 
+    public Set<SimpleNode<T>> getUniqueIndirectParents(){
+        Set<SimpleNode<T>> parents = new HashSet<SimpleNode<T>>(this.getParents());
+        for(int j= 0; j < 5; j++) {
+            for (int i = 0; i < parents.size(); i++) {
+                SimpleNode<T> parent = (SimpleNode<T>) parents.toArray()[i];
+                parents.addAll(parent.getUniqueIndirectParents());
+            }
+        }
+        return parents;
+    }
+
     public List<SimpleNode<T>> getParents(){
         List<SimpleNode<T>> simpleNodeList = new LinkedList<>();
-        for (DirectedWeightedEdge<T> edge : this.edges) {
+
+        List<DirectedWeightedEdge<T>> edgesToParents = this.edges.stream().filter(edge -> edge.getToNode() == this).collect(Collectors.toList());
+
+        for (DirectedWeightedEdge<T> edge : edgesToParents) {
             simpleNodeList.add((SimpleNode<T>) edge.getFromNode());
         }
         return simpleNodeList;
