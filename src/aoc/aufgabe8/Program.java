@@ -30,6 +30,10 @@ public class Program {
         this.commands.add(command);
     }
 
+    public void changeCommandAt(int at, Command newCommand){
+        this.commands.set(at, newCommand);
+    }
+
     public boolean hasExecuted(int position){
         return alreadyExecuted.contains(position);
     }

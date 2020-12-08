@@ -12,6 +12,6 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Aufgabe8Solver.solvePart1("input/input8"));
+        System.out.println(Aufgabe8Solver.solvePart2("input/input8"));
     }
 }
