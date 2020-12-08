@@ -19,6 +19,19 @@ public class SimpleNode<T> extends AbstractNode<T>{
         this.edges.add(newEdge);
     }
 
+
+    public int amountBagContains(){
+        List<DirectedWeightedEdge<T>> edgesToChilds = this.edges.stream().filter(edge -> edge.getFromNode() == this).collect(Collectors.toList());
+        int amount = 1;
+        for (DirectedWeightedEdge<T> edgesToChild : edgesToChilds) {
+            SimpleNode<T> childNode = (SimpleNode<T>) edgesToChild.getToNode();
+            int newAdded = edgesToChild.getWeight() * childNode.amountBagContains();
+            System.out.println(childNode +": "+ newAdded);
+            amount += newAdded;
+        }
+        System.out.println("--");
+        return amount;
+    }
     public Set<SimpleNode<T>> getUniqueIndirectParents(){
         Set<SimpleNode<T>> parents = new HashSet<SimpleNode<T>>(this.getParents());
         for(int j= 0; j < 5; j++) {
@@ -40,6 +53,7 @@ public class SimpleNode<T> extends AbstractNode<T>{
         }
         return simpleNodeList;
     }
+
 
     @Override
     public T getValue() {

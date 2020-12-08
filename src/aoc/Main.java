@@ -11,6 +11,6 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Aufgabe7Solver.solvePart1("input/input7"));
+        System.out.println(Aufgabe7Solver.getInput("input/input7").getNode("shiny gold").amountBagContains()-1);
     }
 }
