@@ -11,8 +11,15 @@ public class Aufgabe1 {
     public static int add(int a, int b) {
         return a + b;
     }
+    public static long add(long a, long b) {
+        return a + b;
+    }
 
     public static boolean sumIs(int a, int b, int sum){
+        return add(a,b) == sum;
+    }
+
+    public static boolean sumIs(long a, long b, long sum){
         return add(a,b) == sum;
     }
 
@@ -41,6 +48,22 @@ public class Aufgabe1 {
                 element1 = list.get(i);
                 element2 = list.get(k);
                 if(isSum2020(element1, element2)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasSum (List<Long> list, long sum){
+        long element1;
+        long element2;
+
+        for(int i = 0; i < list.size()-1; i++) {
+            for(int k = i+1; k < list.size(); k++){
+                element1 = list.get(i);
+                element2 = list.get(k);
+                if(sumIs(element1, element2, sum)){
                     return true;
                 }
             }
