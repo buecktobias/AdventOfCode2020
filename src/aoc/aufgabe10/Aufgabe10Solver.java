@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Aufgabe10Solver {
 
+
     public static List<Integer> getSortedList(List<Integer> integerList){
         List<Integer> copy = new LinkedList<>(integerList);
         Collections.sort(copy);
@@ -42,4 +43,41 @@ public class Aufgabe10Solver {
         Map<Integer, Integer> differences = getDifferences(sortedList);
         return differences.get(1) * differences.get(3);
     }
+
+    public static int getMaxElement(List<Integer> list) {
+        int i = 0;
+        for (Integer integer : list) {
+            if(integer > i){
+                i = integer;
+            }
+        }
+        return i;
+    }
+
+    public static int solvePart2(String filename){
+        List<Integer> inputList = Input.getInputAsInts(filename);
+        inputList.add(0);
+
+        return getPossibleCombinations(inputList);
+    }
+
+    public static int getPossibleCombinations(List<Integer> integerList) {
+        int max = getMaxElement(integerList);
+        Set<Integer> uniqueNumbers = new HashSet<>(integerList);
+        int possibleCombis = combinationsFrom(0, uniqueNumbers, max);
+        return possibleCombis;
+    }
+
+    public static int combinationsFrom(int from, Set<Integer> uniqueNumbers, int end){
+        if(from == end){
+            return 1;
+        }else if(!uniqueNumbers.contains(from) && from != 0){
+            return 0;
+        }else{
+            return combinationsFrom(from + 1, uniqueNumbers, end) + combinationsFrom(from + 2, uniqueNumbers, end) + combinationsFrom(from + 3, uniqueNumbers, end);
+        }
+    }
+
+
+
 }
