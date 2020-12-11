@@ -66,26 +66,13 @@ public class Ferry {
     }
     public List<FerryObject> getAdjacentObjects(int xPosition, int yPosition){
         List<FerryObject> adjacentObjects = new LinkedList<>();
-        int x_0 = xPosition - 1;
-        int x_1 = xPosition;
-        int x_2 = xPosition + 1;
-        int y_0 = yPosition - 1;
-        int y_1 = yPosition;
-        int y_2 = yPosition + 1;
-        int[][] allAdjacentPositions = new int[][] {
-                {x_0, y_0},
-                {x_0, y_1},
-                {x_0, y_2},
-                {x_1, y_2},
-                {x_2, y_2},
-                {x_2, y_1},
-                {x_2, y_0},
-                {x_1, y_0}
-        };
-        for (int[] allAdjacentPosition : allAdjacentPositions) {
-            int x = allAdjacentPosition[0];
-            int y = allAdjacentPosition[1];
-            Optional<FerryObject> ferryObject = this.getObjectAt(x, y);
+
+        List<Vector2D> directions = Directions.getDirections();
+
+        Vector2D position = new Vector2D(xPosition, yPosition);
+        for (Vector2D direction : directions) {
+            Vector2D newPos = position.addVector(direction);
+            Optional<FerryObject> ferryObject = this.getObjectAt(newPos.getX(), newPos.getY());
             ferryObject.ifPresent(adjacentObjects::add);
         }
         return adjacentObjects;

@@ -3,12 +3,10 @@ package aoc.aufgabe11;
 import java.util.List;
 
 public abstract class FerryObject{
-    public int x;
-    public int y;
+    public Vector2D position;
 
     public FerryObject(int x, int y){
-        this.x = x;
-        this.y = y;
+        this.position = new Vector2D(x, y);
     }
     public abstract boolean isEmpty();
     public abstract boolean isOccupied();
@@ -26,8 +24,8 @@ public abstract class FerryObject{
     @Override
     public String toString() {
         return "FerryObject{" +
-                "x=" + x +
-                ", y=" + y +
+                "x=" + this.position.getX() +
+                ", y=" + this.position.getY() +
                 ", empty = "+ isEmpty() +
                 '}';
     }

@@ -20,7 +20,7 @@ public class Floor extends FerryObject{
 
     @Override
     public FerryObject getCopy() {
-        return new Floor(this.x, this.y);
+        return new Floor(this.position.getX(), this.position.getY());
     }
 
     @Override

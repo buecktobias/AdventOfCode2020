@@ -23,7 +23,7 @@ public class Seat extends FerryObject{
 
     @Override
     public FerryObject getCopy() {
-        Seat newSeat = new Seat(x,y);
+        Seat newSeat = new Seat(this.position.getX(),this.position.getY());
         newSeat.isEmpty = this.isEmpty;
         return newSeat;
     }
@@ -32,7 +32,7 @@ public class Seat extends FerryObject{
     public boolean equals(Object obj) {
         Seat ferryObject = (Seat) obj;
         System.out.println("lol");
-        return ferryObject.isEmpty == this.isEmpty && ferryObject.x == this.x && ferryObject.y == this.y;
+        return ferryObject.isEmpty == this.isEmpty && ferryObject.position.getX() == this.position.getX() && ferryObject.position.getY() == this.position.getY();
     }
 
     @Override
