@@ -54,28 +54,58 @@ public class Aufgabe10Solver {
         return i;
     }
 
-    public static int solvePart2(String filename){
+    public static long solvePart2(String filename){
         List<Integer> inputList = Input.getInputAsInts(filename);
         inputList.add(0);
 
         return getPossibleCombinations(inputList);
     }
 
-    public static int getPossibleCombinations(List<Integer> integerList) {
+    public static long getPossibleCombinations(List<Integer> integerList) {
         int max = getMaxElement(integerList);
         Set<Integer> uniqueNumbers = new HashSet<>(integerList);
-        int possibleCombis = combinationsFrom(0, uniqueNumbers, max);
+        long possibleCombis = combinationsFrom(0, uniqueNumbers,new HashMap<Integer, Long>(), max);
         return possibleCombis;
     }
 
-    public static int combinationsFrom(int from, Set<Integer> uniqueNumbers, int end){
-        if(from == end){
-            return 1;
-        }else if(!uniqueNumbers.contains(from) && from != 0){
-            return 0;
-        }else{
-            return combinationsFrom(from + 1, uniqueNumbers, end) + combinationsFrom(from + 2, uniqueNumbers, end) + combinationsFrom(from + 3, uniqueNumbers, end);
+    public static long combinationsFrom(int from, Set<Integer> uniqueNumbers, Map<Integer, Long> savedCombis, int end){
+        if(savedCombis.containsKey(from)){
+            return savedCombis.get(from);
         }
+        long value;
+        if(from == end){
+            value = 1;
+        }else if(!uniqueNumbers.contains(from) && from != 0){
+            value = 0;
+        }else{
+            long combi1;
+            if(savedCombis.containsKey(from + 1)){
+                combi1 = savedCombis.get(from + 1);
+            }else{
+                combi1 = combinationsFrom(from +1, uniqueNumbers, savedCombis, end);
+                savedCombis.put(from + 1, combi1);
+            }
+            long combi2;
+            if(savedCombis.containsKey(from + 2)){
+                combi2 = savedCombis.get(from + 2);
+            }else{
+                combi2 = combinationsFrom(from + 2, uniqueNumbers, savedCombis, end);
+                savedCombis.put(from + 2, combi2);
+            }
+
+            long combi3;
+            if(savedCombis.containsKey(from + 3)){
+                combi3 = savedCombis.get(from + 3);
+            }else{
+                combi3 = combinationsFrom(from + 3, uniqueNumbers, savedCombis, end);
+                savedCombis.put(from + 3, combi3);
+            }
+
+
+            value = combi1 + combi2 + combi3;
+        }
+        savedCombis.put(from, value);
+        return value;
     }
 
 
