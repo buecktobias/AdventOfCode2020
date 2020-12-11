@@ -44,7 +44,7 @@ public class Aufgabe10Solver {
         return differences.get(1) * differences.get(3);
     }
 
-    public static int getMaxElement(List<Integer> list) {
+    public static int getMaxElement(Collection<Integer> list) {
         int i = 0;
         for (Integer integer : list) {
             if(integer > i){
@@ -68,7 +68,7 @@ public class Aufgabe10Solver {
         return possibleCombis;
     }
 
-    public static long combinationsFrom(int from, Set<Integer> uniqueNumbers, Map<Integer, Long> savedCombis, int end){
+    public static long combinationsFrom(int from, Collection<Integer> uniqueNumbers, Map<Integer, Long> savedCombis, int end){
         if(savedCombis.containsKey(from)){
             return savedCombis.get(from);
         }
