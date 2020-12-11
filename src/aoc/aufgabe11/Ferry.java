@@ -13,6 +13,19 @@ public class Ferry {
         this.area = area;
     }
 
+    public int getAmountOccupied(){
+        int occupied = 0;
+        for (int i = 0; i < this.getWidth(); i++) {
+            for (int j = 0; j < this.getHeight(); j++) {
+                if(this.area[i][j].isOccupied()){
+                    occupied++;
+                }
+            }
+
+        }
+        return occupied;
+    }
+
     public Ferry getDeepCopy(){
         FerryObject[][] areaCopy = new FerryObject[this.getWidth()][this.getHeight()];
         for (int i = 0; i < this.getWidth(); i++) {

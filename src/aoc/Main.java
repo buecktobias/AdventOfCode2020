@@ -17,10 +17,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Ferry ferry = Aufgabe11Solver.readInput("input/test_input11");
-        System.out.println(ferry);
+        Ferry ferry = Aufgabe11Solver.readInput("input/input11");
 
-        System.out.println(Aufgabe11Solver.developUntilNoChange(ferry));
-
+        Ferry f = Aufgabe11Solver.developUntilNoChange(ferry);
+        System.out.println(f.getAmountOccupied());
     }
 }
