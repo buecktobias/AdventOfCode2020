@@ -9,15 +9,15 @@ public class Ferry {
     // erst Spalte dann Zeile x, y
     private FerryObject[][] area;
 
-    public Ferry(FerryObject[][] area){
+    public Ferry(FerryObject[][] area) {
         this.area = area;
     }
 
-    public int getAmountOccupied(){
+    public int getAmountOccupied() {
         int occupied = 0;
         for (int i = 0; i < this.getWidth(); i++) {
             for (int j = 0; j < this.getHeight(); j++) {
-                if(this.area[i][j].isOccupied()){
+                if (this.area[i][j].isOccupied()) {
                     occupied++;
                 }
             }
@@ -26,7 +26,7 @@ public class Ferry {
         return occupied;
     }
 
-    public Ferry getDeepCopy(){
+    public Ferry getDeepCopy() {
         FerryObject[][] areaCopy = new FerryObject[this.getWidth()][this.getHeight()];
         for (int i = 0; i < this.getWidth(); i++) {
             for (int j = 0; j < this.getHeight(); j++) {
@@ -41,30 +41,52 @@ public class Ferry {
     }
 
 
-    public void develop(Ferry oldFerry){
+    public void develop(Ferry oldFerry) {
         for (int x = 0; x < this.getWidth(); x++) {
-            for(int y = 0; y < this.getHeight(); y++){
-                List<FerryObject> adjacentObjects = oldFerry.getAdjacentObjects(x,y);
+            for (int y = 0; y < this.getHeight(); y++) {
+                List<FerryObject> adjacentObjects = oldFerry.getAdjacentObjects(x, y);
                 this.area[x][y].changeState(adjacentObjects);
             }
         }
     }
 
-    private int getWidth(){
+    public void develop2(Ferry oldFerry) {
+        for (int x = 0; x < this.getWidth(); x++) {
+            for (int y = 0; y < this.getHeight(); y++) {
+                this.area[x][y].changeState2(oldFerry);
+            }
+        }
+    }
+
+    private int getWidth() {
         return this.area.length;
     }
 
-    private int getHeight(){
+    private int getHeight() {
         return this.area[0].length;
     }
 
-    private Optional<FerryObject> getObjectAt(int xPosition, int yPosition){
-        if (xPosition >= 0 && xPosition < this.getWidth() && yPosition >= 0 && yPosition < this.getHeight()){
+    private Optional<FerryObject> getObjectAt(int xPosition, int yPosition) {
+        if (xPosition >= 0 && xPosition < this.getWidth() && yPosition >= 0 && yPosition < this.getHeight()) {
             return Optional.of(this.area[xPosition][yPosition]);
         }
         return Optional.empty();
     }
-    public List<FerryObject> getAdjacentObjects(int xPosition, int yPosition){
+
+    public boolean isOccupiedInDirection(Vector2D atPosition, Vector2D inDirection) {
+        Optional<FerryObject> objectAt = this.getObjectAt(atPosition.getX(), atPosition.getY());
+        if (objectAt.isEmpty()) { // außerhalb des Spielfelds
+            return false;
+        } else if (objectAt.get().isOccupied()) { // ist besetzt
+            return true;
+        } else if (objectAt.get() instanceof Seat && !objectAt.get().isOccupied()){ // Ist ein leerer Stuhl
+            return false;
+        }else{ // ist ein Floor
+            return this.isOccupiedInDirection(atPosition.addVector(inDirection), inDirection);
+        }
+    }
+
+    public List<FerryObject> getAdjacentObjects(int xPosition, int yPosition) {
         List<FerryObject> adjacentObjects = new LinkedList<>();
 
         List<Vector2D> directions = Directions.getDirections();
@@ -81,9 +103,9 @@ public class Ferry {
     @Override
     public boolean equals(Object obj) {
         Ferry other = (Ferry) obj;
-        for(int x = 0; x < this.getWidth(); x++){
+        for (int x = 0; x < this.getWidth(); x++) {
             for (int i = 0; i < this.getHeight(); i++) {
-                if(!this.area[x][i].equals(other.getArea()[x][i])){
+                if (!this.area[x][i].equals(other.getArea()[x][i])) {
                     return false;
                 }
             }
@@ -95,9 +117,9 @@ public class Ferry {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Ferry{\n");
-        for(int y=0; y < this.getHeight(); y++){
+        for (int y = 0; y < this.getHeight(); y++) {
             for (int x = 0; x < this.getWidth(); x++) {
-               stringBuilder.append(this.area[x][y].toString());
+                stringBuilder.append(this.area[x][y].toString());
             }
             stringBuilder.append("\n");
         }

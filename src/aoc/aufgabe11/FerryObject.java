@@ -16,6 +16,20 @@ public abstract class FerryObject{
         return (int) ferryObjectList.stream().filter(FerryObject::isOccupied).count();
     }
 
+    public abstract void changeState2(Ferry ferry);
+
+    public int getOccupiedInSight(Ferry ferry){
+        List<Vector2D> directions = Directions.getDirections();
+        int occupied = 0;
+        for (Vector2D direction : directions) {
+            Vector2D start = this.position.addVector(direction);
+            if(ferry.isOccupiedInDirection(start, direction)){
+                occupied++;
+            }
+        }
+        return occupied;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);

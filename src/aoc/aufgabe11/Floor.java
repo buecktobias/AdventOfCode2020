@@ -9,6 +9,11 @@ public class Floor extends FerryObject{
     }
 
     @Override
+    public void changeState2(Ferry ferry) {
+
+    }
+
+    @Override
     public boolean isEmpty() {
         return true;
     }

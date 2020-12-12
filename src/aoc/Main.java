@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         Ferry ferry = Aufgabe11Solver.readInput("input/input11");
 
-        Ferry f = Aufgabe11Solver.developUntilNoChange(ferry);
+        Ferry f = Aufgabe11Solver.developUntilNoChange2(ferry);
         System.out.println(f.getAmountOccupied());
     }
 }

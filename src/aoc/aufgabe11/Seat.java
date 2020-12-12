@@ -48,6 +48,18 @@ public class Seat extends FerryObject{
     }
 
     @Override
+    public void changeState2(Ferry ferry) {
+        int amountOccupied = this.getOccupiedInSight(ferry);
+        if(!this.isOccupied() && amountOccupied == 0){
+            this.isEmpty = false;
+        }else if(this.isOccupied() && amountOccupied >= 5){
+            this.isEmpty = true;
+        }else{
+            // Nothing
+        }
+    }
+
+    @Override
     public String toString() {
         if(this.isEmpty()){
             return "L";

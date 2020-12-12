@@ -25,6 +25,12 @@ public class Aufgabe11Solver {
         return newFerry;
    }
 
+   public static Ferry develop2(Ferry oldFerry){
+        Ferry newFerry = oldFerry.getDeepCopy();
+        newFerry.develop2(oldFerry);
+        return newFerry;
+    }
+
    public static Ferry developUntilNoChange(Ferry startFerry){
         Ferry oldFerry = startFerry;
         Ferry newFerry = new Ferry(new FerryObject[1][1]);
@@ -38,6 +44,20 @@ public class Aufgabe11Solver {
         }
         return newFerry;
    }
+
+    public static Ferry developUntilNoChange2(Ferry startFerry){
+        Ferry oldFerry = startFerry;
+        Ferry newFerry = new Ferry(new FerryObject[1][1]);
+        boolean ferrysEqual = false;
+
+        while(!ferrysEqual){
+            newFerry = develop2(oldFerry);
+            System.out.println(newFerry);
+            ferrysEqual = oldFerry.equals(newFerry);
+            oldFerry = newFerry;
+        }
+        return newFerry;
+    }
 
 
 }
