@@ -47,6 +47,8 @@ public enum Direction {
         if(rotation < 0){
             return getDirection(rotation + 360);
         }
+        rotation = rotation % 360;
+
         if(Direction.getValues().containsKey(rotation)){
             return Direction.getValues().get(rotation);
         }else{

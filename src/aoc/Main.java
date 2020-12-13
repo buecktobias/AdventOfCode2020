@@ -5,6 +5,7 @@ import aoc.aufgabe10.Aufgabe10Solver;
 import aoc.aufgabe11.Aufgabe11Solver;
 import aoc.aufgabe11.Ferry;
 import aoc.aufgabe11.Seat;
+import aoc.aufgabe12.Aufgabe12Solver;
 import aoc.aufgabe12.Instruction;
 import aoc.aufgabe12.InstructionType;
 import aoc.aufgabe12.Ship;
@@ -20,11 +21,12 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Ship ship = new Ship();
-        Instruction instruct = new Instruction(InstructionType.FORWARD, 20);
-        Instruction instruct2 = new Instruction(InstructionType.LEFT, 180);
-        ship.executeInstructions(Arrays.asList(instruct2, instruct));
+        List<Instruction> instructionList = Aufgabe12Solver.getInput("input/input12");
 
-        System.out.println(ship);
+        Ship ship = new Ship();
+
+        ship.executeInstructions(instructionList);
+
+        System.out.println(ship.getManhattanDistance());
     }
 }

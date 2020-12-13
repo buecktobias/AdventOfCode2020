@@ -20,6 +20,9 @@ public class Vector2D {
     public Vector2D addVector(Vector2D vector2D){
         return new Vector2D(this.getX() + vector2D.getX(), this.getY() + vector2D.getY());
     }
+    public int getManhattanDistance(){
+        return Math.abs(this.getX()) + Math.abs(this.getY());
+    }
 
     public Vector2D scalarMultiplication(int scalar){
         return new Vector2D(this.x * scalar, this.y * scalar);

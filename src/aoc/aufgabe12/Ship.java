@@ -13,6 +13,13 @@ public class Ship {
         this.facingDirection = Direction.EAST;
     }
 
+    public Vector2D getPosition() {
+        return position;
+    }
+    public int getManhattanDistance(){
+        return this.position.getManhattanDistance();
+    }
+
     public void rotate(Instruction instruction) throws Exception{
         InstructionType instructionType = instruction.getInstructionType();
         assert instructionType == InstructionType.LEFT || instructionType == InstructionType.RIGHT;
