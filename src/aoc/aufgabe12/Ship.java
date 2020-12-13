@@ -17,6 +17,7 @@ public class Ship {
     public Vector2D getPosition() {
         return position;
     }
+
     public int getManhattanDistance(){
         return this.position.getManhattanDistance();
     }
