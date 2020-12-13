@@ -6,8 +6,9 @@ import java.util.List;
 
 public class Ship {
 
-    private Vector2D position;
-    private Direction facingDirection;
+    protected Vector2D position;
+    protected Direction facingDirection;
+
     public Ship() {
         this.position = new Vector2D(0,0);
         this.facingDirection = Direction.EAST;
@@ -40,7 +41,6 @@ public class Ship {
     public void move(Direction direction, int distance){
         Vector2D directionVector = direction.getDirectionVector();
         Vector2D moveVector = directionVector.scalarMultiplication(distance);
-        System.out.println(directionVector);
         this.position = this.position.addVector(moveVector);
     }
 
@@ -49,6 +49,11 @@ public class Ship {
             this.executeInstruction(instruction);
         }
     }
+
+    public void executeForward(Instruction instruction){
+        this.executeInstruction(new Instruction(this.facingDirection, instruction.getParameter()));
+    }
+
     public void executeInstruction(Instruction instruction){
         InstructionType instructionType = instruction.getInstructionType();
         switch (instructionType){
@@ -61,7 +66,6 @@ public class Ship {
                 break;
             case EAST: case WEST: case NORTH: case SOUTH:
                 try {
-                    System.out.println(instructionType.getDirection());
                     this.move(instructionType.getDirection(), instruction.getParameter());
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -70,7 +74,7 @@ public class Ship {
                 break;
 
             case FORWARD:
-                this.executeInstruction(new Instruction(this.facingDirection, instruction.getParameter()));
+                this.executeForward(instruction);
                 break;
         }
     }

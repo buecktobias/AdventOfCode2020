@@ -24,6 +24,23 @@ public class Vector2D {
         return Math.abs(this.getX()) + Math.abs(this.getY());
     }
 
+    public Vector2D rotate(int degrees)throws Exception{
+        if(degrees < 0){
+            return rotate(degrees + 360);
+        }
+        degrees = degrees % 360;
+        if(degrees == 0){
+            return this;
+        }else if(degrees == 90){
+            return new Vector2D(-this.getY(), this.getX());
+        }else if(degrees == 180){
+            return this.rotate(90).rotate(90);
+        }else if(degrees == 270){
+            return this.rotate(180).rotate(90);
+        }
+        throw new Exception("Wrong degree");
+    }
+
     public Vector2D scalarMultiplication(int scalar){
         return new Vector2D(this.x * scalar, this.y * scalar);
     }
