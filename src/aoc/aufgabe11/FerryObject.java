@@ -1,5 +1,7 @@
 package aoc.aufgabe11;
 
+import aoc.helper.Vector2D;
+
 import java.util.List;
 
 public abstract class FerryObject{

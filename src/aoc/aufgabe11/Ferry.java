@@ -1,6 +1,7 @@
 package aoc.aufgabe11;
 
-import java.util.Arrays;
+import aoc.helper.Vector2D;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
