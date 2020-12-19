@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class Aufgabe6Solver {
+public class Task6Solver {
     public static List<Character> stringToCharacterList(String string){
         List<Character> listC = new ArrayList<Character>();
         char[] characters = string.toCharArray();

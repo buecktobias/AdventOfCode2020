@@ -4,7 +4,7 @@ import aoc.helper.Input;
 
 import java.util.*;
 
-public class Aufgabe10Solver {
+public class Task10Solver {
 
 
     public static List<Integer> getSortedList(List<Integer> integerList){

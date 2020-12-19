@@ -5,7 +5,7 @@ import aoc.helper.Input;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Aufgabe12Solver {
+public class Task12Solver {
 
     public static List<Instruction> getInput(String filename){
         String[] instructions = Input.getInputAsStringArray(filename);

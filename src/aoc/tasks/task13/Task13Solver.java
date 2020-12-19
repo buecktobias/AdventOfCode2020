@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Aufgabe13Solver {
+public class Task13Solver {
 
     public static List<Bus> getInput(String filename){
         String[] stringArr = Input.getInputAsStringArray(filename);

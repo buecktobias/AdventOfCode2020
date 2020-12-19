@@ -1,12 +1,12 @@
 package aoc.tasks.task9;
 
-import aoc.tasks.task1.Aufgabe1;
+import aoc.tasks.task1.Task1Solver;
 import aoc.helper.Input;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class Aufgabe9Solver {
+public class Task9Solver {
 
     public static List<Long> getFromTo(int from, int to, List<Long> integerList ) {
         return integerList.subList(from, to);
@@ -39,7 +39,7 @@ public class Aufgabe9Solver {
         }
         List<Long> integers = getFromTo(atIndex - last, atIndex, integerList);
         long number = integerList.get(atIndex);
-        return Aufgabe1.hasSum(integers, number);
+        return Task1Solver.hasSum(integers, number);
     }
 
     public static long getLastNumberNotCorrect(List<Long> integerList, int last){

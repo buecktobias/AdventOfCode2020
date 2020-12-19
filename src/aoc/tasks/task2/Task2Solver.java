@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Aufgabe2 {
+public class Task2Solver {
     public static class PasswordChecker{
         public static int countAmount(char letter, String password){
             int counter = 0;

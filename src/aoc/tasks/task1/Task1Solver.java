@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class Aufgabe1 {
+public class Task1Solver {
     public static int add(int a, int b) {
         return a + b;
     }

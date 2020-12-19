@@ -2,7 +2,7 @@ package aoc.tasks.task11;
 
 import aoc.helper.Input;
 
-public class Aufgabe11Solver {
+public class Task11Solver {
     public  static Ferry readInput(String filename){
         String[] lines = Input.getInputAsStringArray(filename);
         FerryObject[][] area = new FerryObject[lines[0].length()][lines.length];

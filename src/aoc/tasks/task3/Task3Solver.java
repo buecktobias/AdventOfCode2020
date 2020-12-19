@@ -1,7 +1,7 @@
 package aoc.tasks.task3;
 import aoc.helper.Input;
 
-public class Aufgabe3Solver {
+public class Task3Solver {
     public static FieldObject charToFieldObject(char c) throws Exception {
         if(c == '.'){
             return new EmptySpace();

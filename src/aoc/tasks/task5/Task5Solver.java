@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Aufgabe5Solver {
+public class Task5Solver {
     public static class BoardingPass{
         public String Row;
         public String Column;

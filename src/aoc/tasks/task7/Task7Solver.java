@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Aufgabe7Solver {
+public class Task7Solver {
     public static DirectedWeightedGraph<String> getInput(String filename){
         DirectedWeightedGraph<String> graph = new DirectedWeightedGraph<>();
         String input= "";

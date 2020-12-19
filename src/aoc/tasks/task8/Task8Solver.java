@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Aufgabe8Solver {
+public class Task8Solver {
 
     public static Program getInput(String filename) {
         Program program = new Program();

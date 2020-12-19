@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class Aufgabe4Solver {
+public class Task4Solver {
 
     public static Passport createPassport(String passport){
         String REGEX = "([\\w]{3}):([\\w#]*)";
