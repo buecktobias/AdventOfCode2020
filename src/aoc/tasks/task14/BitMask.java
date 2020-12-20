@@ -1,5 +1,7 @@
 package aoc.tasks.task14;
 
+import java.util.List;
+
 public class BitMask {
     private char[] mask;
 
@@ -28,4 +30,5 @@ public class BitMask {
         }
         return Binary.binaryToDecimal(masked_binary);
     }
+
 }
