@@ -9,15 +9,17 @@ import aoc.tasks.task16.TicketField;
 import aoc.tasks.task17.Grid3D;
 import aoc.tasks.task17.Grid4D;
 import aoc.tasks.task17.Task17Solver;
+import aoc.tasks.task19.Automate;
+import aoc.tasks.task22.Game;
+import aoc.tasks.task22.Player;
+import aoc.tasks.task22.Task22Solver;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Grid4D grid = Task17Solver.getInput2("input/task17/input");
-        System.out.println(Task17Solver.domultipleCycles2(grid, 6).getAmountActive());
-        // System.out.println(Task16Solver.getAllCorrectValues(allTicketFields));
-        // System.out.println(Task16Solver.getAllTicketValues("input/task16/test_input"));
+        System.out.println(Task22Solver.solvePart1("input/task22/input"));
     }
 }
